@@ -8,7 +8,7 @@ datagroup: 0_vysakh_thelook_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-datagroup: schedule_check{
+datagroup: schedule_check_2{
   sql_trigger: SELECT mod(case when current_date < [second thursday of current month] THEN
                current_month_num ELSE when EXTRACT(HOUR FROM CURRENT_TIMESTAMP) = 7 then
                current_month_num + 1 else current_month END, 12) ;;
