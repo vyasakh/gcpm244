@@ -8,10 +8,17 @@ datagroup: 0_vysakh_thelook_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-datagroup: schedule_check_3{
-  sql_trigger: SELECT mod(case when current_date < 04-07-2023 THEN
-               current_month_num ELSE when EXTRACT(HOUR FROM CURRENT_TIMESTAMP) = 7 then
-               current_month_num + 1 else current_month END, 12) ;;
+
+datagroup: new_schedule_check {
+  sql_trigger: SELECT *,
+     (CASE
+          WHEN created_at < '2016-04-16' THEN current_month_num
+          ELSE
+      CASE
+          WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) ='10' THEN  current_month_num +1
+          ELSE current_month_num
+          END
+          END);;
 }
 
 persist_with: 0_vysakh_thelook_default_datagroup
