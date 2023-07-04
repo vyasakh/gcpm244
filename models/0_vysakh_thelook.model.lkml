@@ -9,16 +9,16 @@ datagroup: 0_vysakh_thelook_default_datagroup {
 }
 
 
-datagroup: new_schedule_check {
+datagroup: new_schedule_check2 {
   sql_trigger: SELECT *,
-     (CASE
-          WHEN created_at < '2016-04-16' THEN "hi"
-          ELSE
-      CASE
-          WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) ='10' THEN  "ho"
-          ELSE "hi"
-          END
-          END);;
+  (CASE
+  WHEN current_date < '2023-07-04' THEN "hi"
+  ELSE
+  CASE
+  WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) ='10' THEN  "ho"
+  ELSE "hi"
+  END
+  END);;
 }
 
 persist_with: 0_vysakh_thelook_default_datagroup
