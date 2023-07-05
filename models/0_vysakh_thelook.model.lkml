@@ -10,6 +10,26 @@ datagroup: 0_vysakh_thelook_default_datagroup {
 
 #test2
 
+
+access_grant: One {
+  user_attribute: grant
+  allowed_values: ["1"]
+}
+access_grant: Two {
+  user_attribute: grant
+  allowed_values: ["2"]
+}
+access_grant: Three {
+  user_attribute: grant
+  allowed_values: ["3"]
+}
+
+access_grant: four {
+  user_attribute: grant
+  allowed_values: ["4"]
+}
+
+
 datagroup: new_schedule_check2 {
   sql_trigger: SELECT *,
   (CASE
