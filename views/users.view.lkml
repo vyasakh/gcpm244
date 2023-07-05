@@ -25,7 +25,7 @@ view: users {
     type: string
     map_layer_name: countries
     sql: ${TABLE}.country ;;
-    required_access_grants: [four]
+    required_access_grants: [two,four]
   }
 
   dimension_group: created {

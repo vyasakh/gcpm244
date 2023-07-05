@@ -15,7 +15,7 @@ access_grant: One {
   user_attribute: grant
   allowed_values: ["1"]
 }
-access_grant: Two {
+access_grant: two {
   user_attribute: grant
   allowed_values: ["2"]
 }
