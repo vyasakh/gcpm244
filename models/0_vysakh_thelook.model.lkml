@@ -9,6 +9,7 @@ datagroup: 0_vysakh_thelook_default_datagroup {
 }
 
 
+
 datagroup: new_schedule_check2 {
   sql_trigger: SELECT *,
   (CASE
