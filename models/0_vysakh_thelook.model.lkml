@@ -24,7 +24,11 @@ explore: events {
 
 
 
-explore: flights {}
+explore: flights {
+  always_filter: {
+    filters: [flights.arr_date: ""]
+  }
+}
 
 
 
