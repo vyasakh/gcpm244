@@ -8,6 +8,40 @@ datagroup: 0_vysakh_thelook_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+#test2
+
+
+access_grant: One {
+  user_attribute: grant
+  allowed_values: ["1"]
+}
+access_grant: two {
+  user_attribute: grant
+  allowed_values: ["2"]
+}
+access_grant: Three {
+  user_attribute: grant
+  allowed_values: ["3"]
+}
+
+access_grant: four {
+  user_attribute: grant
+  allowed_values: ["4"]
+}
+
+
+datagroup: new_schedule_check2 {
+  sql_trigger: SELECT *,
+  (CASE
+  WHEN current_date < '2023-07-04' THEN "hi"
+  ELSE
+  CASE
+  WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) ='10' THEN  "ho"
+  ELSE "hi"
+  END
+  END);;
+}
+
 persist_with: 0_vysakh_thelook_default_datagroup
 
 explore: account {}
