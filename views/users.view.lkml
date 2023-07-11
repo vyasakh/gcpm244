@@ -33,7 +33,7 @@ view: users {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
   }
-  dimension: email {
+  dimension: Credentials {
     type: string
     sql: ${TABLE}.email ;;
   }
@@ -60,6 +60,15 @@ view: users {
   measure: count {
     type: count
     drill_fields: [detail*]
+  }
+  dimension: email {
+    sql: ${TABLE}.email ;;
+    tags: ["email"]
+  }
+
+  dimension: user_id {
+    sql: ${TABLE}.user_id ;;
+    tags: ["user_id"]
   }
 
   # ----- Sets of fields for drilling ------
