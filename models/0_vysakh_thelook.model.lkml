@@ -57,7 +57,7 @@ explore: events {
   }
 }
 
-
+explore: pagination {}
 
 explore: flights {
   always_filter: {
