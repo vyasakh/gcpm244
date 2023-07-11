@@ -42,4 +42,8 @@ view: order_items {
     type: average
     sql: ${sale_price} ;;
   }
+  measure: avg2 {
+    type: average
+    sql: 6.951856132427851E+20 ;;
+  }
 }
