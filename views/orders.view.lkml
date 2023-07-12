@@ -17,6 +17,42 @@ view: orders {
     sql: ${TABLE}.status ;;
   }
 
+  parameter: method {
+    type: unquoted
+    allowed_value: {
+
+      value: "sum"
+    }
+    allowed_value: {
+
+      value: "median"
+    }
+  }
+
+  parameter: filter {
+    type: unquoted
+    allowed_value: {
+      value: "complete"
+    }
+    allowed_value: {
+      value: "pending"
+    }
+      }
+ measure: sum {
+  type:sum
+   sql:  (select ${id} from orders where ${status}="{{filter._parameter_value}}");;
+ }
+  # measure: aggregate {
+  #   sql:
+  #   {% if method._parameter_value == 'sum' %}
+  #     sum(  ${sum} )
+  #   {% elsif method._parameter_value == 'median' %}
+  #     avg(${sum}  )
+  #   {% else %}
+  #     ${id}
+  #   {% endif %};;
+  # }
+
 
   dimension: user_id {
     type: number

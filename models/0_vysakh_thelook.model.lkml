@@ -45,7 +45,7 @@ datagroup: new_schedule_check2 {
 persist_with: 0_vysakh_thelook_default_datagroup
 
 explore: account {}
-
+explore: agg {}
 explore: employees {}
 
 explore: events {
