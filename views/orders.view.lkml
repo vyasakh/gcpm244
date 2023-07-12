@@ -16,6 +16,8 @@ view: orders {
     type: string
     sql: ${TABLE}.status ;;
   }
+
+
   dimension: user_id {
     type: number
     # hidden: yes
@@ -23,6 +25,7 @@ view: orders {
   }
   measure: count {
     type: count
+    filters: [status: "cancelled"]
     drill_fields: [detail*]
   }
 

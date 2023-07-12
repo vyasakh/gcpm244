@@ -34,8 +34,22 @@ view: order_items {
     type: number
     sql: ${TABLE}.sale_price ;;
   }
+
+  measure: sale {
+    type: number
+    sql: ${sale_price}-500 ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
+  }
+  measure: avg {
+    type: average
+    sql: ${sale_price} ;;
+  }
+  measure: avg2 {
+    type: average
+    sql: 6.951856132427851E+20 ;;
   }
 }
