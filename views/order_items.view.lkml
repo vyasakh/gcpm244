@@ -37,9 +37,11 @@ view: order_items {
 
   measure: sale {
     type: number
-    sql: ${sale_price}-500 ;;
+    sql: ${sale_price} ;;
   }
-
+measure: test_minus_to_zero {
+  sql: case when ${sale}<0 THEN 0 ELSE ${sale} END ;;
+}
   measure: count {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
