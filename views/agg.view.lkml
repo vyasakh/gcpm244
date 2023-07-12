@@ -31,6 +31,18 @@ view: agg {
     }
   }
 
+  parameter: filter {
+    type: unquoted
+    allowed_value: {
+
+      value: "complete"
+    }
+    allowed_value: {
+
+      value: "pending"
+    }
+  }
+
 
   dimension: id {
     description: ""
@@ -43,8 +55,12 @@ view: agg {
     description: ""
     type: number
   }
+  dimension: filtered_sum{
+    type: number
+    sql: select sum from orders where ${status}="{{filter._parameter_value}}" ;;
+  }
   measure: aggregate {
-      sql:
+    sql:
       {% if method._parameter_value == 'sum' %}
         sum(  ${sum} )
       {% elsif method._parameter_value == 'median' %}
@@ -52,6 +68,5 @@ view: agg {
       {% else %}
         ${id}
       {% endif %};;
-    }
-
+  }
 }

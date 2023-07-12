@@ -40,7 +40,7 @@ view: orders {
       }
  measure: sum {
   type:sum
-   sql:  (select ${id} from orders where ${status}="{{filter._parameter_value}}");;
+   sql:   ${id};;
  }
   # measure: aggregate {
   #   sql:
