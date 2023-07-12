@@ -71,6 +71,17 @@ view: users {
     tags: ["user_id"]
   }
 
+  measure: count_of_users{
+    type: count_distinct
+    sql: ${id} ;;
+  }
+
+  measure: count_of_all_users {
+    type: count_distinct
+    sql: ${id} ;;
+  }
+
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
