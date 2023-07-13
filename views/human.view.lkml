@@ -1,3 +1,4 @@
+include: "/test.explore.lkml"
 view: human {
   sql_table_name: demo_db.Human ;;
   drill_fields: [id]

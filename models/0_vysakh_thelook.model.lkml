@@ -2,14 +2,15 @@ connection: "thelook"
 
 # include all the views
 include: "/views/**/*.view.lkml"
-
+include: "/sql_runner_query.view.lkml"
 datagroup: 0_vysakh_thelook_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
-
+explore: sql_runner_query {}
 #test2
 
+# test
 
 access_grant: One {
   user_attribute: grant
@@ -56,9 +57,13 @@ explore: events {
   }
 }
 
+explore: pagination {}
 
-
-explore: flights {}
+explore: flights {
+  always_filter: {
+    filters: [flights.arr_date: ""]
+  }
+}
 
 
 
@@ -79,6 +84,12 @@ explore: orders {
 }
 
 explore: order_items {
+  conditionally_filter: {
+    filters: [order_items.returned_year: "18 years"]
+    unless: [order_items.mtd]
+
+
+  }
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;

@@ -27,15 +27,36 @@ view: order_items {
   }
   dimension_group: returned {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, quarter, year,day_of_week,month_name,month_num]
     sql: ${TABLE}.returned_at ;;
   }
   dimension: sale_price {
     type: number
     sql: ${TABLE}.sale_price ;;
+
   }
+  dimension: mtd {
+    type: yesno
+    sql: ${phone} ;;
+  }
+
+  measure: sale {
+    type: number
+    sql: ${sale_price} ;;
+  }
+measure: test_minus_to_zero {
+  sql: case when ${sale}<0 THEN 0 ELSE ${sale} END ;;
+}
   measure: count {
     type: count
     drill_fields: [id, orders.id, inventory_items.id]
+  }
+  measure: avg {
+    type: average
+    sql: ${sale_price} ;;
+  }
+  measure: avg2 {
+    type: average
+    sql: 6.951856132427851E+20 ;;
   }
 }

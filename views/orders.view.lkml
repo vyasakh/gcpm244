@@ -20,6 +20,44 @@ view: orders {
     type: string
     sql: ${TABLE}.status ;;
   }
+
+  parameter: method {
+    type: unquoted
+    allowed_value: {
+
+      value: "sum"
+    }
+    allowed_value: {
+
+      value: "median"
+    }
+  }
+
+  parameter: filter {
+    type: unquoted
+    allowed_value: {
+      value: "complete"
+    }
+    allowed_value: {
+      value: "pending"
+    }
+      }
+ measure: sum {
+  type:sum
+   sql:   ${id};;
+ }
+  # measure: aggregate {
+  #   sql:
+  #   {% if method._parameter_value == 'sum' %}
+  #     sum(  ${sum} )
+  #   {% elsif method._parameter_value == 'median' %}
+  #     avg(${sum}  )
+  #   {% else %}
+  #     ${id}
+  #   {% endif %};;
+  # }
+
+
   dimension: user_id {
     type: number
     # hidden: yes
@@ -27,7 +65,18 @@ view: orders {
   }
   measure: count {
     type: count
+    filters: [status: "cancelled"]
     drill_fields: [detail*]
+  }
+
+  measure: count_of_users{
+    type: count_distinct
+    sql: ${id} ;;
+  }
+
+  measure: count_of_all_users {
+    type: count_distinct
+    sql: ${id} ;;
   }
 
   # ----- Sets of fields for drilling ------
