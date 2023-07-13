@@ -82,6 +82,20 @@ view: users {
   }
 
 
+measure: hyper{
+  type: number
+  sql: ${age} ;;
+  link: {
+    url: "https://gcpl2310.cloud.looker.com/x/MOoqBpOo3AJjNaCCbcrR2p"
+  }
+  html:{% if value > 20 %}
+  <a style="color: green">{{rendered_value}}▲</a>
+  {% elsif value < 20 %}
+  <a style="color: red">{{rendered_value}}▼</a>
+  {% else %}
+  <a style="color: black">{{rendered_value}}</a>
+  {% endif %} ;;
+}
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [

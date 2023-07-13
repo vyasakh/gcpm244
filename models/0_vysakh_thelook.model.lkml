@@ -2,7 +2,7 @@ connection: "thelook"
 
 # include all the views
 include: "/views/**/*.view.lkml"
-include: "/sql_runner_query.view.lkml"
+#include: "/sql_runner_query.view.lkml"
 datagroup: 0_vysakh_thelook_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
@@ -29,7 +29,7 @@ access_grant: four {
   user_attribute: grant
   allowed_values: ["4"]
 }
-
+  #Hello Ragha
 
 datagroup: new_schedule_check2 {
   sql_trigger: SELECT *,
