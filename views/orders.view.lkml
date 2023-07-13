@@ -6,6 +6,22 @@ view: orders {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+
+    link: {
+      label: "dashboard link"
+      #url: "https://gcpl236.cloud.looker.com/dashboards/168?orders.id={{ value }}"
+      url: "https://gcpl2310.cloud.looker.com/dashboards/112"
+
+    }
+    #html:
+    # <p style="background-color:powderblue;"> {{ value }} </p>;;
+    html:{% if value > 20 %}
+          <a style="color: green">{{rendered_value}}▲</a>
+          {% elsif value < 20 %}
+          <a style="color: red">{{rendered_value}}▼</a>
+          {% else %}
+          <a style="color: black">{{rendered_value}}</a>
+          {% endif %} ;;
   }
   dimension_group: created {
     type: time
@@ -73,6 +89,25 @@ view: orders {
   measure: count_of_all_users {
     type: count_distinct
     sql: ${id} ;;
+  }
+  measure: htmllink {
+    type: number
+    sql: ${id}/4 ;;
+    link: {
+      label: "dashboard link"
+      #url: "https://gcpl236.cloud.looker.com/dashboards/168?orders.id={{ value }}"
+      url: "https://gcpl2310.cloud.looker.com/dashboards/112"
+
+    }
+    #html:
+    # <p style="background-color:powderblue;"> {{ value }} </p>;;
+    html:{% if value > 20 %}
+          <a style="color: green">{{rendered_value}}▲</a>
+          {% elsif value < 20 %}
+          <a style="color: red">{{rendered_value}}▼</a>
+          {% else %}
+          <a style="color: black">{{rendered_value}}</a>
+          {% endif %} ;;
   }
 
   # ----- Sets of fields for drilling ------
