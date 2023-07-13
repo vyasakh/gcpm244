@@ -8,7 +8,7 @@ view: sql_runner_query {
           status AS `agg.status`,
           SUM((select id from orders where id= "{% parameter filter %}" )
             ) AS `agg.sum`
-      FROM demo_db.orders ;;
+      FROM demo_db.orders;;
   }
 
   measure: count {

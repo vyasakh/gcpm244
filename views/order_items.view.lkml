@@ -27,12 +27,17 @@ view: order_items {
   }
   dimension_group: returned {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, quarter, year,day_of_week,month_name,month_num]
     sql: ${TABLE}.returned_at ;;
   }
   dimension: sale_price {
     type: number
     sql: ${TABLE}.sale_price ;;
+
+  }
+  dimension: mtd {
+    type: yesno
+    sql: ${phone} ;;
   }
 
   measure: sale {
