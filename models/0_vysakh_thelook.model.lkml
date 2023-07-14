@@ -9,17 +9,17 @@ datagroup: 0_vysakh_thelook_default_datagroup {
 }
 
 
-datagroup: new_schedule_check2 {
-  sql_trigger: SELECT *,
-  (CASE
-  WHEN current_date < '2023-07-04' THEN "hi"
-  ELSE
-  CASE
-  WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) ='10' THEN  "ho"
-  ELSE "hi"
-  END
-  END);;
-}
+# datagroup: new_schedule_check2 {
+#   sql_trigger: SELECT *,
+#   (CASE
+#   WHEN current_date < '2023-07-04' THEN "hi"
+#   ELSE
+#   CASE
+#   WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) ='10' THEN  "ho"
+#   ELSE "hi"
+#   END
+#   END);;
+# }
 
 persist_with: 0_vysakh_thelook_default_datagroup
 
