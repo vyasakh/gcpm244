@@ -84,9 +84,9 @@ view: users {
 
 measure: hyper{
   type: number
-  sql: ${age} ;;
+  sql: ${id}/4 ;;
   link: {
-    url: "https://gcpl2310.cloud.looker.com/x/MOoqBpOo3AJjNaCCbcrR2p"
+    url: "https://www.google.com/"
   }
   html:{% if value > 20 %}
   <a style="color: green">{{rendered_value}}▲</a>
