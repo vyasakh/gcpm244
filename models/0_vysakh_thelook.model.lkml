@@ -86,7 +86,7 @@ explore: orders {
 
 explore: order_items {
   conditionally_filter: {
-    filters: [order_items.returned_year: "18 years"]
+
     unless: [order_items.mtd]
 
 
