@@ -86,6 +86,7 @@ measure: hyper{
   type: number
   sql: ${age} ;;
   link: {
+    label: "dashboard_link"
     url: "https://gcpl2310.cloud.looker.com/x/MOoqBpOo3AJjNaCCbcrR2p"
   }
   html:{% if value > 20 %}
@@ -96,6 +97,8 @@ measure: hyper{
   <a style="color: black">{{rendered_value}}</a>
   {% endif %} ;;
 }
+
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [

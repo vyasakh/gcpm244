@@ -10,7 +10,12 @@ datagroup: 0_vysakh_thelook_default_datagroup {
 explore: sql_runner_query {}
 #test2
 
+<<<<<<< HEAD
 #  test
+=======
+# test
+#hello
+>>>>>>> branch 'master' of https://github.com/vyasakh/gcpl2310
 
 access_grant: One {
   user_attribute: grant
@@ -31,17 +36,17 @@ access_grant: four {
 }
   #Hello Ragha
 
-datagroup: new_schedule_check2 {
-  sql_trigger: SELECT *,
-  (CASE
-  WHEN current_date < '2023-07-04' THEN "hi"
-  ELSE
-  CASE
-  WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) ='10' THEN  "ho"
-  ELSE "hi"
-  END
-  END);;
-}
+# datagroup: new_schedule_check2 {
+#   sql_trigger: SELECT *,
+#   (CASE
+#   WHEN current_date < '2023-07-04' THEN "hi"
+#   ELSE
+#   CASE
+#   WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) ='10' THEN  "ho"
+#   ELSE "hi"
+#   END
+#   END);;
+# }
 
 persist_with: 0_vysakh_thelook_default_datagroup
 
@@ -85,7 +90,7 @@ explore: orders {
 
 explore: order_items {
   conditionally_filter: {
-    filters: [order_items.returned_year: "18 years"]
+
     unless: [order_items.mtd]
 
 
