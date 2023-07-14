@@ -85,9 +85,8 @@ view: users {
 measure: hyper{
   type: number
   sql: ${id}/4 ;;
-  link: {
-    url: "https://www.google.com/"
-  }
+
+
   html:{% if value > 20 %}
   <a style="color: green">{{rendered_value}}▲</a>
   {% elsif value < 20 %}
@@ -96,6 +95,8 @@ measure: hyper{
   <a style="color: black">{{rendered_value}}</a>
   {% endif %} ;;
 }
+
+
   # ----- Sets of fields for drilling ------
   set: detail {
     fields: [
