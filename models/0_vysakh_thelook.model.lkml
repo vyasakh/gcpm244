@@ -10,12 +10,7 @@ datagroup: 0_vysakh_thelook_default_datagroup {
 explore: sql_runner_query {}
 #test2
 
-<<<<<<< HEAD
-#  test
-=======
-# test
-#hello
->>>>>>> branch 'master' of https://github.com/vyasakh/gcpl2310
+
 
 access_grant: One {
   user_attribute: grant
