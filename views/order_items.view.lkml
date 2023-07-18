@@ -39,6 +39,7 @@ view: order_items {
     type: yesno
     sql: ${phone} ;;
   }
+  ###
 
   measure: sale {
     type: number
