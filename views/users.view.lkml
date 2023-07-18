@@ -6,6 +6,9 @@ view: users {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    group_label: "{% if _explore._name == 'users' %} ID Group
+    {% elsif _explore._name == 'orders' %} ID
+    {% else %} Not ID Group {% endif %}"
   }
   dimension: age {
     type: number
@@ -14,6 +17,7 @@ view: users {
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
+
   }
   dimension: country {
     type: string
@@ -69,11 +73,13 @@ view: users {
   dimension: user_id {
     sql: ${TABLE}.user_id ;;
     tags: ["user_id"]
+
   }
 
   measure: count_of_users{
     type: count_distinct
     sql: ${id} ;;
+    drill_fields: [minus]
   }
 
   measure: count_of_all_users {
@@ -85,7 +91,10 @@ view: users {
 measure: hyper{
   type: number
   sql: ${id}/4 ;;
-
+link: {
+  label: "Link"
+  url: "https://gcpl2310.cloud.looker.com/explore/0_vysakh_thelook/order_items?qid=JkMaA85TyUJu4lsSiUITZ2&origin_space=63&toggle=vis"
+}
 
   html:{% if value > 20 %}
   <a style="color: green">{{rendered_value}}▲</a>
@@ -94,6 +103,12 @@ measure: hyper{
   {% else %}
   <a style="color: black">{{rendered_value}}</a>
   {% endif %} ;;
+}
+
+measure: minus {
+  type: sum
+  sql: 567839-56784345656666767 ;;
+
 }
 
 
