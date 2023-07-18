@@ -7,6 +7,9 @@ view: order_items {
     type: number
     sql: ${TABLE}.id ;;
   }
+
+  ##test
+
   dimension: inventory_item_id {
     type: number
     # hidden: yes
@@ -39,6 +42,7 @@ view: order_items {
     type: yesno
     sql: ${phone} ;;
   }
+  ###
 
   measure: sale {
     type: number
