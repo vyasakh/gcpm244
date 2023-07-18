@@ -33,7 +33,7 @@ view: users {
     timeframes: [raw, time, date, week, month, quarter, year]
     sql: ${TABLE}.created_at ;;
   }
-  dimension: email {
+  dimension: Credentials {
     type: string
     sql: ${TABLE}.email ;;
   }
@@ -61,6 +61,41 @@ view: users {
     type: count
     drill_fields: [detail*]
   }
+  dimension: email {
+    sql: ${TABLE}.email ;;
+    tags: ["email"]
+  }
+
+  dimension: user_id {
+    sql: ${TABLE}.user_id ;;
+    tags: ["user_id"]
+  }
+
+  measure: count_of_users{
+    type: count_distinct
+    sql: ${id} ;;
+  }
+
+  measure: count_of_all_users {
+    type: count_distinct
+    sql: ${id} ;;
+  }
+
+
+measure: hyper{
+  type: number
+  sql: ${id}/4 ;;
+
+
+  html:{% if value > 20 %}
+  <a style="color: green">{{rendered_value}}▲</a>
+  {% elsif value < 20 %}
+  <a style="color: red">{{rendered_value}}▼</a>
+  {% else %}
+  <a style="color: black">{{rendered_value}}</a>
+  {% endif %} ;;
+}
+
 
   # ----- Sets of fields for drilling ------
   set: detail {

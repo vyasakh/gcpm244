@@ -2,15 +2,20 @@ connection: "thelook"
 
 # include all the views
 include: "/views/**/*.view.lkml"
-
+include: "/totals.view.lkml"
+#include: "/testing.view.lkml"
+include: "/order.explore.lkml"
+# include: "/sql_runner_query.view.lkml"
 datagroup: 0_vysakh_thelook_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
 }
-
+# explore: testing {}
+explore: sql_runner_query {}
 #test2
 
 # i have been changing this can you check
+
 
 access_grant: One {
   user_attribute: grant
@@ -29,23 +34,25 @@ access_grant: four {
   user_attribute: grant
   allowed_values: ["4"]
 }
+  #Hello Ragha
 
-
-datagroup: new_schedule_check2 {
-  sql_trigger: SELECT *,
-  (CASE
-  WHEN current_date < '2023-07-04' THEN "hi"
-  ELSE
-  CASE
-  WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) ='10' THEN  "ho"
-  ELSE "hi"
-  END
-  END);;
-}
+# datagroup: new_schedule_check2 {
+#   sql_trigger: SELECT *,
+#   (CASE
+#   WHEN current_date < '2023-07-04' THEN "hi"
+#   ELSE
+#   CASE
+#   WHEN EXTRACT(HOUR FROM CURRENT_TIMESTAMP) ='10' THEN  "ho"
+#   ELSE "hi"
+#   END
+#   END);;
+# }
 
 persist_with: 0_vysakh_thelook_default_datagroup
 
+
 explore: account {}
+explore: totals {}
 
 explore: employees {}
 
@@ -57,7 +64,7 @@ explore: events {
   }
 }
 
-
+explore: pagination {}
 
 explore: flights {
   always_filter: {
@@ -84,6 +91,12 @@ explore: orders {
 }
 
 explore: order_items {
+  conditionally_filter: {
+
+    unless: [order_items.mtd]
+
+
+  }
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
