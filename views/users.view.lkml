@@ -68,12 +68,17 @@ view: users {
   dimension: email {
     sql: ${TABLE}.email ;;
     tags: ["email"]
+    drill_fields: [minus,id]
   }
 
   dimension: user_id {
     sql: ${TABLE}.user_id ;;
     tags: ["user_id"]
 
+  }
+  measure: minus {
+    type: sum
+    sql: ${id}-987654333567 ;;
   }
 
   measure: count_of_users{
