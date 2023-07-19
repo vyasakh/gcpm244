@@ -7,6 +7,9 @@ view: order_items {
     type: number
     sql: ${TABLE}.id ;;
   }
+
+  ##test
+
   dimension: inventory_item_id {
     type: number
     # hidden: yes
@@ -27,7 +30,7 @@ view: order_items {
   }
   dimension_group: returned {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year,day_of_week,month_name,month_num]
+    timeframes: [raw, time, date, week, month, quarter, year ,day_of_week,month_name,month_num]
     sql: ${TABLE}.returned_at ;;
   }
   dimension: sale_price {
@@ -39,6 +42,7 @@ view: order_items {
     type: yesno
     sql: ${phone} ;;
   }
+  ###
 
   measure: sale {
     type: number

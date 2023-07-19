@@ -9,6 +9,18 @@ view: orders {
 
 
   }
+
+  dimension: idtest {
+
+    type: number
+    sql: ${TABLE}.id ;;
+     html:
+
+     <a href="https://gcpl236.cloud.looker.com/dashboards/168?ID={{_filters['id']}}">{{rendered_value}} <a/>;;
+
+  }
+
+
   dimension_group: created {
     type: time
     timeframes: [raw,time, date, week, month, quarter, year]
@@ -99,6 +111,9 @@ view: orders {
           <a style="color: black">{{rendered_value}}</a>
           {% endif %} ;;
   }
+
+
+
 
   # ----- Sets of fields for drilling ------
   set: detail {
