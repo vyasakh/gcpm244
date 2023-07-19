@@ -17,8 +17,9 @@ view: users {
   }
   dimension: country {
     type: string
-    map_layer_name: countries
+   # map_layer_name: countries
     sql: ${TABLE}.country ;;
+
   }
 
   dimension: country_access {
@@ -44,6 +45,7 @@ view: users {
   dimension: gender {
     type: string
     sql: ${TABLE}.gender ;;
+    drill_fields: [detail*]
   }
   dimension: last_name {
     type: string
@@ -79,6 +81,7 @@ view: users {
   measure: count_of_all_users {
     type: count_distinct
     sql: ${id} ;;
+    drill_fields: [minus]
   }
 
 
@@ -93,11 +96,22 @@ measure: hyper{
   <a style="color: green">{{rendered_value}}▲</a>
   {% elsif value < 20 %}
   <a style="color: red">{{rendered_value}}▼</a>
-  {% else %}
+ {% else %}
   <a style="color: black">{{rendered_value}}</a>
   {% endif %} ;;
 }
 
+measure: reason{
+  type: list
+  list_field: gender
+}
+
+
+  measure: minus {
+    type: sum
+    sql: 567839-56784345656666767 ;;
+
+  }
 
   # ----- Sets of fields for drilling ------
   set: detail {
