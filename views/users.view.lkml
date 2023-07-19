@@ -104,6 +104,22 @@ link: {
   <a style="color: black">{{rendered_value}}</a>
   {% endif %} ;;
 }
+  measure: hyperdupe{
+    type: number
+    sql: ${id}/4 ;;
+    # link: {
+    #   label: "Link"
+    #   url: "https://gcpl2310.cloud.looker.com/explore/0_vysakh_thelook/order_items?qid=JkMaA85TyUJu4lsSiUITZ2&origin_space=63&toggle=vis"
+    # }
+
+    html:{% if value > 20 %}
+        <a style="color: green" href="https://gcpl2310.cloud.looker.com/explore/0_vysakh_thelook/order_items?qid=JkMaA85TyUJu4lsSiUITZ2&origin_space=63&toggle=vis">{{rendered_value}}▲</a>
+        {% elsif value < 20 %}
+        <a style="color: red" href="https://gcpl2310.cloud.looker.com/explore/0_vysakh_thelook/order_items?qid=JkMaA85TyUJu4lsSiUITZ2&origin_space=63&toggle=vis">{{rendered_value}}▼</a>
+        {% else %}
+        <a style="color: black" href="https://gcpl2310.cloud.looker.com/explore/0_vysakh_thelook/order_items?qid=JkMaA85TyUJu4lsSiUITZ2&origin_space=63&toggle=vis">{{rendered_value}}</a>
+        {% endif %} ;;
+  }
 
 
   # dimension: state_flag_image {
