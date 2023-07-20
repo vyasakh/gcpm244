@@ -98,17 +98,6 @@ explore: orders {
 }
 
 explore: order_items {
-  conditionally_filter: {
-
-   filters: [order_items.returned_year: "18 years"]
-   unless: [order_items.mtd]
-
-
-
-
-
-
-  }
   join: orders {
     type: left_outer
     sql_on: ${order_items.order_id} = ${orders.id} ;;
