@@ -2,12 +2,17 @@ connection: "thelook"
 
 # include all the views
 include: "/views/**/*.view.lkml"
+
+include: "/Increment.view.lkml"
+#include: "/sql_runner_query.view.lkml"
+
 include: "/totals.view.lkml"
 #include: "/testing.view.lkml"
 include: "/order.explore.lkml"
-# include: "/sql_runner_query.view.lkml"
+
+
 datagroup: 0_vysakh_thelook_default_datagroup {
-  # sql_trigger: SELECT MAX(id) FROM etl_log;;
+   sql_trigger: SELECT MAX(id) FROM users;;
   max_cache_age: "1 hour"
 }
 # explore: testing {}
@@ -54,6 +59,8 @@ persist_with: 0_vysakh_thelook_default_datagroup
 explore: account {}
 explore: totals {}
 
+explore: increment {}
+
 explore: employees {}
 
 explore: events {
@@ -93,7 +100,12 @@ explore: orders {
 explore: order_items {
   conditionally_filter: {
 
-    unless: [order_items.mtd]
+   filters: [order_items.returned_year: "18 years"]
+   unless: [order_items.mtd]
+
+
+
+
 
 
   }
