@@ -13,6 +13,7 @@ view: flights {
   dimension: cancelled {
     type: string
     sql: ${TABLE}.cancelled ;;
+    #html: <img src=”https://logo-core.clearbit.com/looker.com” />;;
   }
   dimension: carrier {
     type: string
