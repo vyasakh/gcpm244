@@ -44,6 +44,11 @@ view: order_items {
   }
   ###
 
+  dimension: apply_target_color {
+    type: yesno
+
+  }
+
   measure: sale {
     type: number
     sql: ${sale_price} ;;
@@ -62,5 +67,14 @@ measure: test_minus_to_zero {
   measure: avg2 {
     type: average
     sql: 6.951856132427851E+20 ;;
+  }
+  measure: peace {
+    type: number
+    sql: ${id} ;;
+
+  }
+  measure: less {
+    type: number
+    sql: ${order_id} ;;
   }
 }

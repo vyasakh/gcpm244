@@ -2,7 +2,7 @@ connection: "thelook"
 
 # include all the views
 include: "/views/**/*.view.lkml"
-
+include: "/Label.dashboard.lookml"
 include: "/Increment.view.lkml"
 #include: "/sql_runner_query.view.lkml"
 
