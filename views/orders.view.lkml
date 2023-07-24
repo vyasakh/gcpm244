@@ -35,6 +35,44 @@ view: orders {
     sql: ${TABLE}.status ;;
   }
 
+  parameter: param {
+    type: string
+    allowed_value: {
+      value: "Drishya"
+    }
+    allowed_value: {
+      value: "Vinay"
+    }
+    allowed_value: {
+      value: "Vysakh"
+    }
+  }
+
+  dimension: title_test {
+    label: "Title_Test"
+    sql: 1 ;;
+    type: string
+    html: <h1>{% case param._parameter_value %}
+          {% when 'Drishya' %}DRISHYA
+          {% when 'Vinay' %}VINAY
+          {% when 'Vysakh' %}VYSAKH
+          {% else %}End Case
+        {% endcase %} by Pokemon</h1>;;
+  }
+
+  dimension: title_test2 {
+    label: "Title_Test2"
+    sql: 1 ;;
+    type: string
+
+    html: {% if param._parameter_value=='Drishya' %}
+          <h1>DRISHYA</h1>
+          {% elsif param._parameter_value=='Vinay' %}VINAY
+          {%  elsif param._parameter_value=='Vysakh' %}VYSAKH
+          {% else %}<h1>End Case</h1>
+        {% endif %} <h1>by Pokemon</h1>;;
+  }
+
   parameter: method {
     type: unquoted
     allowed_value: {

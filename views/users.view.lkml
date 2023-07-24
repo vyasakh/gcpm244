@@ -76,7 +76,7 @@ view: users {
 
   measure: perc_count_id {
     type: percent_of_total
-    sql: count(${age}) ;;
+    sql: ${count} ;;
   }
 
   measure: cd {
