@@ -70,11 +70,25 @@ view: users {
   measure: count {
     type: count
     drill_fields: [detail*]
+    html: {{rendered_value}} | {{perc_count_id._rendered_value}} ;;
   }
+
+
+  measure: perc_count_id {
+    type: percent_of_total
+    sql: count(${age}) ;;
+  }
+
+  measure: cd {
+    type: count_distinct
+    sql: ${age} ;;
+    html: {{rendered_value}} | {{perc_count_id._rendered_value}} ;;
+  }
+
   dimension: email {
     sql: ${TABLE}.email ;;
     tags: ["email"]
-    drill_fields: [minus,id]
+    drill_fields: [minus,id,orders.id]
   }
 
   dimension: user_id {

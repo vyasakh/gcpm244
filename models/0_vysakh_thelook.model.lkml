@@ -3,8 +3,6 @@ connection: "thelook"
 # include all the views
 include: "/views/**/*.view.lkml"
 
-#include: "/Increment.view.lkml"
-#include: "/sql_runner_query.view.lkml"
 
 include: "/totals.view.lkml"
 #include: "/testing.view.lkml"

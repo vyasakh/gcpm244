@@ -114,6 +114,10 @@ view: orders {
 
 
 
+  measure: list {
+    type: list
+    list_field: status
+  }
 
   # ----- Sets of fields for drilling ------
   set: detail {
