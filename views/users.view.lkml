@@ -2,6 +2,10 @@ view: users {
   sql_table_name: demo_db.users ;;
   drill_fields: [id]
 
+  filter: test {
+    type: date
+  }
+
   dimension: id {
     primary_key: yes
     type: number
@@ -21,8 +25,9 @@ view: users {
   }
   dimension: country {
     type: string
-    map_layer_name: countries
+   # map_layer_name: countries
     sql: ${TABLE}.country ;;
+
   }
 
   dimension: country_access {
@@ -48,6 +53,7 @@ view: users {
   dimension: gender {
     type: string
     sql: ${TABLE}.gender ;;
+    drill_fields: [detail*]
   }
   dimension: last_name {
     type: string
@@ -104,6 +110,7 @@ view: users {
   measure: count_of_all_users {
     type: count_distinct
     sql: ${id} ;;
+    drill_fields: [minus]
   }
 
 
@@ -119,7 +126,7 @@ link: {
   <a style="color: green">{{rendered_value}}▲</a>
   {% elsif value < 20 %}
   <a style="color: red">{{rendered_value}}▼</a>
-  {% else %}
+ {% else %}
   <a style="color: black">{{rendered_value}}</a>
   {% endif %} ;;
 }
@@ -157,6 +164,13 @@ link: {
   #             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1024px-No_image_available.svg.png" height="170" width="170">
   #             {% endif %} ;;
   # }
+
+measure: reason{
+  type: list
+  list_field: gender
+}
+
+
 
 
   # ----- Sets of fields for drilling ------
