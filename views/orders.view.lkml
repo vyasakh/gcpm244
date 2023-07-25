@@ -60,6 +60,31 @@ view: orders {
         {% endcase %} by Pokemon</h1>;;
   }
 
+  parameter: param2 {
+    type: unquoted
+    # allowed_value: {
+    #   value: "Drishya"
+    # }
+    # allowed_value: {
+    #   value: "Vinay"
+    # }
+    # allowed_value: {
+    #   value: "Vysakh"
+    # }
+  }
+
+  dimension: title_test_dupe {
+    label: "Title_Test_dupe"
+    sql: 1 ;;
+    type: string
+    html: <h1>{% case param2._parameter_value %}
+          {% when 'Drishya' %}DRISHYA
+          {% when 'Vinay' %}VINAY
+          {% when 'Vysakh' %}VYSAKH
+          {% else %}End Case
+        {% endcase %} by Pokemon</h1>;;
+  }
+
   dimension: title_test2 {
     label: "Title_Test2"
     sql: 1 ;;
