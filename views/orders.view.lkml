@@ -53,9 +53,9 @@ view: orders {
     sql: 1 ;;
     type: string
     html: <h1>{% case param._parameter_value %}
-          {% when 'Drishya' %}DRISHYA
-          {% when 'Vinay' %}VINAY
-          {% when 'Vysakh' %}VYSAKH
+          {% when "'Drishya'" %}DRISHYA
+          {% when "'Vinay'" %}VINAY
+          {% when "'Vysakh'" %}VYSAKH
           {% else %}End Case
         {% endcase %} by Pokemon</h1>;;
   }
