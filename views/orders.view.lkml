@@ -23,7 +23,7 @@ view: orders {
 
     type: number
     sql: ${TABLE}.id ;;
-    drill_fields: [id,drill_test]
+    drill_fields: [id,drill_test,test]
   }
 
 
@@ -150,6 +150,7 @@ measure: drill_test {
     type: number
     # hidden: yes
     sql: ${TABLE}.user_id ;;
+    drill_fields: [id,drill_test,test]
   }
   measure: count {
     type: count
