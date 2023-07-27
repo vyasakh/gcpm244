@@ -14,10 +14,16 @@ view: orders {
 
     type: number
     sql: ${TABLE}.id ;;
-     html:
+    html:
 
-     <a href="https://gcpl236.cloud.looker.com/dashboards/168?ID={{_filters['id']}}">{{rendered_value}} <a/>;;
+    <a href="https://gcpl236.cloud.looker.com/dashboards/168?ID={{_filters['id']}}">{{rendered_value}} <a/>;;
 
+  }
+  dimension: idtestdupe {
+
+    type: number
+    sql: ${TABLE}.id ;;
+    drill_fields: [id,drill_test]
   }
 
 
@@ -123,6 +129,11 @@ view: orders {
   type:sum
    sql:   ${id};;
  }
+measure: drill_test {
+  type: sum_distinct
+  value_format_name: eur
+  sql: id-200000000 ;;
+}
   # measure: aggregate {
   #   sql:
   #   {% if method._parameter_value == 'sum' %}
