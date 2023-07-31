@@ -34,7 +34,7 @@ view: users {
     type: string
     map_layer_name: countries
     sql: ${TABLE}.country ;;
-    required_access_grants: [two]
+    #required_access_grants: [two]
   }
 
   dimension_group: created {
@@ -76,7 +76,7 @@ view: users {
 
   measure: perc_count_id {
     type: percent_of_total
-    sql: count(${age}) ;;
+    sql: ${count} ;;
   }
 
   measure: cd {

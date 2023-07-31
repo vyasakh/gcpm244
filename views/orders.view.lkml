@@ -14,10 +14,16 @@ view: orders {
 
     type: number
     sql: ${TABLE}.id ;;
-     html:
+    html:
 
-     <a href="https://gcpl236.cloud.looker.com/dashboards/168?ID={{_filters['id']}}">{{rendered_value}} <a/>;;
+    <a href="https://gcpl236.cloud.looker.com/dashboards/168?ID={{_filters['id']}}">{{rendered_value}} <a/>;;
 
+  }
+  dimension: idtestdupe {
+
+    type: number
+    sql: ${TABLE}.id ;;
+    drill_fields: [id,drill_test,test]
   }
 
 
@@ -35,8 +41,72 @@ view: orders {
     sql: ${TABLE}.status ;;
   }
 
+<<<<<<< HEAD
   measure: mean {
     type: average
+=======
+  parameter: param {
+    type: string
+    allowed_value: {
+      value: "Drishya"
+    }
+    allowed_value: {
+      value: "Vinay"
+    }
+    allowed_value: {
+      value: "Vysakh"
+    }
+  }
+
+  dimension: title_test {
+    label: "Title_Test"
+    sql: 1 ;;
+    type: string
+    html: <h1>{% case param._parameter_value %}
+          {% when "'Drishya'" %}DRISHYA
+          {% when "'Vinay'" %}VINAY
+          {% when "'Vysakh'" %}VYSAKH
+          {% else %}End Case
+        {% endcase %} by Pokemon</h1>;;
+  }
+
+  parameter: param2 {
+    type: unquoted
+    # allowed_value: {
+    #   value: "Drishya"
+    # }
+    # allowed_value: {
+    #   value: "Vinay"
+    # }
+    # allowed_value: {
+    #   value: "Vysakh"
+    # }
+  }
+
+  dimension: title_test_dupe {
+    label: "Title_Test_dupe"
+    sql: 1 ;;
+    type: string
+    html: <h1>{% case param2._parameter_value %}
+          {% when 'Drishya' %}DRISHYA
+          {% when 'Vinay' %}VINAY
+          {% when 'Vysakh' %}VYSAKH
+          {% else %}End Case
+        {% endcase %} by Pokemon</h1>;;
+  }
+
+  dimension: title_test2 {
+    label: "Title_Test2"
+    sql: 1 ;;
+    type: string
+
+    html: {% if param._parameter_value=='Drishya' %}
+          <h1>DRISHYA</h1>
+          {% elsif param._parameter_value=='Vinay' %}VINAY
+          {%  elsif param._parameter_value=='Vysakh' %}VYSAKH
+          {% else %}<h1>End Case</h1>
+        {% endif %} <h1>by Pokemon</h1>;;
+>>>>>>> branch 'master' of https://github.com/vyasakh/gcpl2310
   }
 
   parameter: method {
@@ -64,6 +134,11 @@ view: orders {
   type:sum
    sql:   ${id};;
  }
+measure: drill_test {
+  type: sum_distinct
+  value_format_name: eur
+  sql: id-200000000 ;;
+}
   # measure: aggregate {
   #   sql:
   #   {% if method._parameter_value == 'sum' %}
@@ -80,6 +155,7 @@ view: orders {
     type: number
     # hidden: yes
     sql: ${TABLE}.user_id ;;
+    drill_fields: [id,drill_test,test]
   }
   measure: count {
     type: count
