@@ -35,6 +35,10 @@ view: orders {
     sql: ${TABLE}.status ;;
   }
 
+  measure: mean {
+    type: average
+  }
+
   parameter: method {
     type: unquoted
     allowed_value: {
