@@ -15,11 +15,12 @@ include: "/order.explore.lkml"
 #}
 # explore: testing {}
 explore: sql_runner_query {}
+fiscal_month_offset: -6
 #test2
 
 # i have been changing this can you check
 
-
+week_start_day: sunday
 access_grant: One {
   user_attribute: grant
   allowed_values: ["1"]

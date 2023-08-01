@@ -39,9 +39,24 @@ view: users {
 
   dimension_group: created {
     type: time
-    timeframes: [raw, time, date, week, month, quarter, year]
+    timeframes: [raw, time, date, week, month, quarter, year,fiscal_year,fiscal_quarter,day_of_year]
     sql: ${TABLE}.created_at ;;
   }
+
+  dimension: create_day_of_fiscal_year {
+    type: number
+    #sql: ${TABLE}.create_time;;
+    sql: CASE
+          WHEN ${created_year} IN (2016,2020,2024,2028,2032) AND ${created_day_of_year} < 183 THEN ${created_day_of_year} + 184
+          WHEN ${created_year} IN (2016,2020,2024,2028,2032) AND ${created_day_of_year} >= 183 THEN ${created_day_of_year} - 182
+          WHEN ${created_day_of_year} < 182 THEN ${created_day_of_year} + 184
+          WHEN ${created_day_of_year} >= 182 THEN ${created_day_of_year} - 181
+          ELSE NULL
+          END
+          ;;
+  }
+
+
   dimension: Credentials {
     type: string
     sql: ${TABLE}.email ;;
@@ -112,8 +127,12 @@ view: users {
     sql: ${id} ;;
     drill_fields: [minus]
   }
-
-
+measure: hyt {
+  sql: ${id}/4 ;;
+}
+measure: hep {
+  sql: ${id}*1.5 ;;
+}
 measure: hyper{
   type: number
   sql: ${id}/4 ;;
@@ -123,7 +142,7 @@ link: {
 }
 
   html:{% if value > 20 %}
-  <a style="color: green">{{rendered_value}}▲</a>
+  <a style="color: green"><u>{{rendered_value}}▲</u></a>
   {% elsif value < 20 %}
   <a style="color: red">{{rendered_value}}▼</a>
  {% else %}
@@ -139,7 +158,7 @@ link: {
     # }
 
     html:{% if value > 20 %}
-        <a style="color: green" href="https://gcpl2310.cloud.looker.com/explore/0_vysakh_thelook/order_items?qid=JkMaA85TyUJu4lsSiUITZ2&origin_space=63&toggle=vis">{{rendered_value}}▲</a>
+        <a style="color: green" href="https://gcpl2310.cloud.looker.com/explore/0_vysakh_thelook/order_items?qid=JkMaA85TyUJu4lsSiUITZ2&origin_space=63&toggle=vis"><u>{{rendered_value}}▲</u></a>
         {% elsif value < 20 %}
         <a style="color: red" href="https://gcpl2310.cloud.looker.com/explore/0_vysakh_thelook/order_items?qid=JkMaA85TyUJu4lsSiUITZ2&origin_space=63&toggle=vis">{{rendered_value}}▼</a>
         {% else %}

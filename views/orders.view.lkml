@@ -27,9 +27,31 @@ view: orders {
   }
 
 
+  dimension: format {
+    type: number
+    sql: 4667570.99+0 ;;
+    value_format: "0.000,,\" K\""
+
+
+  }
+  dimension: formatsum {
+    type: number
+    sql: ${format}
+    ;;
+    value_format: "#.##0,\" K\""
+  }
+
+  dimension: until_today {
+    type: yesno
+    sql: ${created_day_of_week_index} +1 <= dayofweek(current_date()) AND ${created_day_of_week_index} >= 0 ;;
+
+  }
+
+
+
   dimension_group: created {
     type: time
-    timeframes: [raw,time, date, week, month, quarter, year]
+    timeframes: [raw,time, date, week, month, quarter, year,day_of_year,day_of_week,day_of_week_index]
     sql: ${TABLE}.created_at ;;
   }
   dimension: test {
@@ -53,6 +75,8 @@ view: orders {
       value: "Vysakh"
     }
   }
+
+
 
   dimension: title_test {
     label: "Title_Test"
@@ -128,6 +152,7 @@ view: orders {
  measure: sum {
   type:sum
    sql:   ${id};;
+
  }
 measure: drill_test {
   type: sum_distinct
@@ -155,7 +180,7 @@ measure: drill_test {
   measure: count {
     type: count
     filters: [status: "cancelled"]
-    drill_fields: [detail*]
+    #drill_fields: [detail*]
   }
 
   measure: count_of_users{

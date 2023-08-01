@@ -25,6 +25,7 @@ view: events {
     type: string
     sql: ${TABLE}.value ;;
   }
+
   measure: count {
     type: count
     drill_fields: [id, users.id, users.first_name, users.last_name]
