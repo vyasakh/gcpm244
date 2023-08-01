@@ -63,6 +63,10 @@ view: orders {
     sql: ${TABLE}.status ;;
   }
 
+<<<<<<< HEAD
+  measure: mean {
+    type: average
+=======
   parameter: param {
     type: string
     allowed_value: {
@@ -126,6 +130,7 @@ view: orders {
           {%  elsif param._parameter_value=='Vysakh' %}VYSAKH
           {% else %}<h1>End Case</h1>
         {% endif %} <h1>by Pokemon</h1>;;
+>>>>>>> branch 'master' of https://github.com/vyasakh/gcpl2310
   }
 
   parameter: method {
