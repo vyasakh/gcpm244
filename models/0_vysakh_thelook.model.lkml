@@ -3,10 +3,8 @@ connection: "thelook"
 # include all the views
 include: "/views/**/*.view.lkml"
 
+include: "/views/orders.view.lkml"
 
-include: "/totals.view.lkml"
-#include: "/testing.view.lkml"
-include: "/order.explore.lkml"
 
 
 #datagroup: 0_vysakh_thelook_default_datagroup {
@@ -14,30 +12,14 @@ include: "/order.explore.lkml"
  # max_cache_age: "1 hour"
 #}
 # explore: testing {}
-explore: sql_runner_query {}
+
 fiscal_month_offset: -6
 #test2
 
 # i have been changing this can you check
 
 week_start_day: sunday
-access_grant: One {
-  user_attribute: grant
-  allowed_values: ["1"]
-}
-access_grant: two {
-  user_attribute: grant
-  allowed_values: ["2"]
-}
-access_grant: Three {
-  user_attribute: grant
-  allowed_values: ["3"]
-}
 
-access_grant: four {
-  user_attribute: grant
-  allowed_values: ["4"]
-}
   #Hello Ragha
 
 # datagroup: new_schedule_check2 {
@@ -56,7 +38,6 @@ access_grant: four {
 
 
 explore: account {}
-explore: totals {}
 
 
 explore: employees {}
@@ -69,7 +50,7 @@ explore: events {
   }
 }
 
-explore: pagination {}
+
 
 explore: flights {
   always_filter: {
