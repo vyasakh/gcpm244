@@ -7,6 +7,7 @@ view: testing {
 
   dimension_group: returned {
     type: time
+
     timeframes: [
       raw,
       time,
