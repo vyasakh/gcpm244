@@ -7,7 +7,6 @@ view: testing {
 
   dimension_group: returned {
     type: time
-
     timeframes: [
       raw,
       time,
@@ -22,6 +21,8 @@ view: testing {
 
     sql: ${TABLE}.returned_at ;;
   }
+
+
 
   dimension: phone {
     type: string
