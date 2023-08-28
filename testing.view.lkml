@@ -23,7 +23,6 @@ view: testing {
   }
 
 
-
   dimension: phone {
     type: string
     sql: ${TABLE}.phone ;;
